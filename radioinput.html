@@ -1,32 +1,31 @@
-
-<!-- saved from url=(0029)http://www.sirpnut.com/radio/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-
+<html>
+	<head>
+			<title>Radio Database</title>
 
 
 <script type="text/javascript">
 function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
+	if (navigator.geolocation)
+	{
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else {
+		alert("Geolocation is not supported by this browser.");
+	}
 }
 
 function showPosition(position) {
 	document.getElementById("LatitudeInput").value = position.coords.latitude;
 	document.getElementById("LongitudeInput").value = position.coords.longitude;
+	document.getElementById("form").submit();
 }
-
-</script>
+	</script>
 </head>
-<body>
-	<form method="post" action="http://www.sirpnut.com/radio/search.php">
-		Latitude: <input type="text" name="Latitude" id="LatitudeInput"><br>
-		Longitude: <input type="text" name="Longitude" id="LongitudeInput"><br>
-		<input type="button" onclick="javascript:getLocation();" value="Get Current Location">
-		<input type="submit">
-	</form>
-
-
-</body></html>
+	<body onload="javascript:getLocation();">
+		<form method="post" action="http://rf.sirpnut.com/" id="form">
+			Latitude: <input type="text" name="Latitude" id="LatitudeInput"><br>
+			Longitude: <input type="text" name="Longitude" id="LongitudeInput"><br>
+			<input type="button" onclick="javascript:getLocation();" value="Get Current Location">
+			<input type="submit">
+		</form>
+	</body>
+</html>
